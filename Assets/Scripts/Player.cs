@@ -7,12 +7,13 @@ public class Player : MonoBehaviour
 	public Team team;
 	public string username;
 	public int id;
+    private CircleCollider2D colider;
 
-	private PressedKey pressedKeys = 0;
+    private PressedKey pressedKeys = 0;
 
 	public bool isPressed (PressedKey key)
 	{
-		return (pressedKeys & key) != Player.PressedKey.None;
+        return (pressedKeys & key) != Player.PressedKey.None;
 	}
 
 	public void SetPressedKeys (PressedKey keys)
@@ -28,7 +29,9 @@ public class Player : MonoBehaviour
 			Physics2D.IgnoreCollision (wall.GetComponent<BoxCollider2D> (), GetComponent<CircleCollider2D> ());
 		}
 		GetComponent<PlayerMovement> ().reset ();
-	}
+        colider = gameObject.GetComponent<CircleCollider2D>();
+        colider.excludeLayers = LayerMask.GetMask("ball");
+    }
 
 	public enum PressedKey
 	{

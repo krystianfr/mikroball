@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
 {
 	public float acceleration = 500;
 	public float shootDecceleration = .8f;
+	public CircleCollider2D collider;
 	private Rigidbody2D rigidb;
 	private Player player;
 
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		rigidb = gameObject.GetComponent<Rigidbody2D> ();
 		player = gameObject.GetComponent<Player> ();
+		collider = gameObject.GetComponent<CircleCollider2D> ();
 	}
 
 	void FixedUpdate ()
@@ -35,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 		Vector2 v = new Vector2 (0, 0);
 		if (player.isPressed (Player.PressedKey.Up)) {
 			v += new Vector2 (0, 1);
-		}
+        }
 		if (player.isPressed (Player.PressedKey.Down)) {
 			v += new Vector2 (0, -1);
 		}

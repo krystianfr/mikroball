@@ -28,14 +28,15 @@ public class GlobalState : MonoBehaviour
 				goalScored = false;
 				return GoalState ();
 			}
-			if (Input.GetKeyDown ("r")) {
-				ResetAll ();
+			if (Input.GetKeyDown (KeyCode.Escape)) {
+                Debug.Log("Paused");
+                ResetAll ();
 				gameStarted = false;
 				goalScored = false;
 				return null;
 			} else
 				return GameState ();
-		} else if (Input.GetKeyDown ("p")) {
+		} else if (Input.GetKeyDown (KeyCode.Escape)) {
 			// start the game now
 			gameStarted = true;
 			return PreKickoffState ();
